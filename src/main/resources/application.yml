@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: pg-os
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5433/PG_OS}
+    username: ${DB_USER:nbirla}
+    password: ${DB_PASSWORD:Nayan@1234}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+
+server:
+  port: 8081
+
+app:
+  jwt:
+    secret: ${JWT_SECRET:change-this-to-a-long-random-secret-at-least-32-chars}
+    access-token-minutes: 15
+    refresh-token-days: 30
