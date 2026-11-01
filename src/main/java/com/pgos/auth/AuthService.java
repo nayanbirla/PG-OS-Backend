@@ -41,8 +41,8 @@ public class AuthService {
 
     @Transactional
     public AuthResponse register(RegisterRequest req) {
-        if (req.role() != Role.OWNER && req.role() != Role.CUSTOMER) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Role must be OWNER or CUSTOMER");
+        if (req.role() != Role.OWNER && req.role() != Role.CUSTOMER && req.role() != Role.STAFF) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Role must be OWNER, CUSTOMER or STAFF");
         }
         if (userRepository.existsByEmail(req.email())) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "Email already registered");
